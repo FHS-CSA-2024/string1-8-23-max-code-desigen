@@ -27,6 +27,7 @@ public class String1
 
     public String1()
     {
+        
 
     }
 
@@ -39,7 +40,7 @@ public class String1
      *  helloName("X") → "Hello X!"
      */
     public String helloName(String name) {
-        return unimplemented;
+        return "Hello "+ name + "!";
     }
 
     /*
@@ -50,7 +51,7 @@ public class String1
      * makeAbba("What", "Up") → "WhatUpUpWhat"
      */
     public String makeAbba(String a, String b) {
-        return unimplemented;
+        return a + b + b + a;
     }
 
     /*
@@ -62,7 +63,7 @@ public class String1
      * makeTags("cite", "Yay") → "<cite>Yay</cite>"
      */
     public String makeTags(String tag, String word) {
-        return unimplemented;
+        return "<" + tag + ">" + word + "</" + tag + ">";
     }
 
     /*
@@ -76,7 +77,7 @@ public class String1
      * makeOutWord("[[]]", "word") → "[[word]]"
      */
     public String makeOutWord(String out, String word) {
-        return unimplemented;
+        return out.substring (0,2) + word + out.substring (2); 
     }
 
     /*
@@ -87,7 +88,8 @@ public class String1
      * extraEnd("Hi") → "HiHiHi"
      */
     public String extraEnd(String str) {
-        return unimplemented;
+        String lastTwo = str.substring(str.length() - 2);
+        return lastTwo + lastTwo + lastTwo;
     }
 
     /*
@@ -100,7 +102,12 @@ public class String1
      * firstTwo("ab") → "ab"
      */
     public String firstTwo(String str) {
-        return unimplemented;
+        if (str.length() < 2){
+            return str; 
+        }
+        else{
+            return str.substring (0,2);
+        }
     }
 
     /*
@@ -110,7 +117,7 @@ public class String1
      * firstHalf("abcdef") → "abc"
      */
     public String firstHalf(String str) {
-        return unimplemented;
+        return str.substring(0,str.length() /2 );
     }
 
     /*
@@ -121,7 +128,7 @@ public class String1
      * withoutEnd("coding") → "odin"
      */
     public String withoutEnd(String str) {
-        return unimplemented;
+        return str.substring (1, str.length () -1);
     }
 
     /*
@@ -133,7 +140,12 @@ public class String1
      * comboString("aaa", "b") → "baaab"
      */
     public String comboString(String a, String b) {
-        return unimplemented;
+        if (a.length () < b.length()){
+            return a + b + a;
+        }
+        else {
+            return b + a + b;
+        }
     }
 
     /*
@@ -144,7 +156,8 @@ public class String1
      * middleThree("solving") → "lvi"
      */
     public String middleThree(String str) {
-        return unimplemented;
+        int middle = str.length()/2;
+        return str.substring (middle - 1, middle +2);
     }
 
     /*
@@ -155,7 +168,8 @@ public class String1
      * extraFront("H") → "HHH"
      */
     public String extraFront(String str) {
-        return unimplemented;
+        String firstTwo = str.length() < 2 ? str : str.substring(0, 2);
+        return firstTwo + firstTwo + firstTwo;
     }
 
     /*
@@ -166,7 +180,7 @@ public class String1
      * left2("Hi") → "Hi"
      */
     public String left2(String str) {
-        return unimplemented;
+        return str.substring(2) + str.substring(0,2);
     }
 
     /*
@@ -178,25 +192,37 @@ public class String1
      * hasBad("xxbadxx") → false
      */
     public boolean hasBad(String str) {
+        int index =  str.indexOf("bad");
+        if(index == 0 || index == 1){
+            return true;
+        }
         return false;
     }
 
     /*
      * Given two strings, append them together (known as "concatenation") and return the result. 
      * However, if the concatenation creates a double-char, then omit one of the chars, 
-     * 	so "abc" and "cat" yields "abcat".
+     *     so "abc" and "cat" yields "abcat".
      * conCat("abc", "cat") → "abcat"
      * conCat("dog", "cat") → "dogcat"
      * conCat("abc", "") → "abc"
      */
     public String conCat(String a, String b) {
-        return unimplemented;
+        if (a.isEmpty() || b.isEmpty()) {
+            return a + b;
+        }
+        
+        if (a.charAt(a.length() - 1) == b.charAt(0)) {
+            return a + b.substring(1);
+        }
+        
+        return a + b; 
     }
 
     /*
      *Given two strings, append them together (known as "concatenation") and return the result. 
      *However, if the strings are different lengths, omit chars from the longer string 
-     *	so it is the same length as the shorter string. 
+     *    so it is the same length as the shorter string. 
      *So "Hello" and "Hi" yield "loHi". 
      *The strings may be any length.
      *minCat("Hello", "Hi") → "loHi"
@@ -204,7 +230,13 @@ public class String1
      *minCat("java", "Hello") → "javaello"
      */
     public String minCat(String a, String b) {
-        return unimplemented;
+        int minLength = Math.min(a.length(), b.length()); 
+        
+        String shorterA = a.substring(a.length() - minLength); 
+        String shorterB = b.substring(b.length() - minLength);
+        
+        return shorterA + shorterB; 
+        
     }
 
     /*
@@ -215,7 +247,15 @@ public class String1
      * withoutX("Hxix") → "Hxi"
      */
     public String withoutX(String str) {
-        return unimplemented;
+        if (str.startsWith("x")){
+            str = str.substring(1);
+        }
+        
+        if (str.endsWith("x")){
+            str = str.substring(0, str.length() - 1);
+        }
+        
+        return str; 
     }
 
     /*
