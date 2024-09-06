@@ -267,8 +267,27 @@ public class String1
      * deFront("java") → "va"
      * deFront("away") → "aay"
      */
-    public String deFront(String str) {    
-        return unimplemented;
+    public String deFront(String str) {
+        if (str.length() < 2){
+            return str; 
+        }
+        
+        String result = ""; 
+        
+        if (str.charAt(0) == 'a') {
+            result += 'a'; 
+        }
+        
+        
+        if (str.length () > 1 && str.charAt(1) == 'b' ){
+             result += 'b';
+        }
+        
+        if (str.length() > 2) {
+            result += str.substring(2);    
+        }
+        
+        return result; 
     }
 
 }
